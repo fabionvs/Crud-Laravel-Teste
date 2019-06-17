@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\ProdutosRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    /** @var  PedidoRepository */
+    private $pedidoRepository;
+
+    public function __construct(ProdutosRepository $produtosRepo)
     {
-        $this->middleware('auth');
+        $this->produtosRepository = $produtosRepo;
     }
 
     /**
-     * Show the application dashboard.
+     * Display a listing of the Pedido.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     *
+     * @return Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home');
+        $produtos = $this->produtosRepository->getActiveProducts();
+
+        return view('home.index')
+            ->with('produtos', $produtos);
     }
 }

@@ -27,3 +27,9 @@ Route::resource('/', 'ProdutosAPIController');
 
 
 Route::resource('pedidos', 'PedidosAPIController');
+
+Route::resource('produtos', 'ProdutosAPIController');
+
+Route::resource('pedidos', 'PedidoAPIController');
+
+Route::resource('produtos', 'ProdutosAPIController');

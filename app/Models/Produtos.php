@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Produtos
  * @package App\Models
- * @version June 17, 2019, 3:10 pm UTC
+ * @version June 17, 2019, 6:13 pm UTC
  *
  * @property string nome
  * @property float valor
