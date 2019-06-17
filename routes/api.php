@@ -23,3 +23,7 @@ Route::get('/home', 'HomeController@index');
 
 
 Route::resource('/', 'ProdutosAPIController');
+
+
+
+Route::resource('pedidos', 'PedidosAPIController');

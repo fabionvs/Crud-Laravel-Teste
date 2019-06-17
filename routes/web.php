@@ -17,3 +17,7 @@ Auth::routes();
 
 
 Route::resource('produtos', 'ProdutosController');
+
+
+
+Route::resource('pedidos', 'PedidosController');
