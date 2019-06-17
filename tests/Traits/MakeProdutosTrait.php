@@ -42,7 +42,10 @@ trait MakeProdutosTrait
         $fake = Faker::create();
 
         return array_merge([
-            'pedidos' => $fake->randomDigitNotNull,
+            'nome' => $fake->word,
+            'valor' => $fake->word,
+            'quantidade' => $fake->randomDigitNotNull,
+            'status' => $fake->word,
             'created_at' => $fake->date('Y-m-d H:i:s'),
             'updated_at' => $fake->date('Y-m-d H:i:s')
         ], $produtosFields);

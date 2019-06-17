@@ -8,10 +8,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Produtos
  * @package App\Models
- * @version June 17, 2019, 2:56 pm UTC
+ * @version June 17, 2019, 3:10 pm UTC
  *
- * @property \App\Models\ Pedidos pedidos
- * @property integer pedidos
+ * @property string nome
+ * @property float valor
+ * @property integer quantidade
+ * @property boolean status
  */
 class Produtos extends Model
 {
@@ -24,7 +26,10 @@ class Produtos extends Model
 
 
     public $fillable = [
-        'pedidos'
+        'nome',
+        'valor',
+        'quantidade',
+        'status'
     ];
 
     /**
@@ -34,7 +39,10 @@ class Produtos extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'pedidos' => 'integer'
+        'nome' => 'string',
+        'valor' => 'double',
+        'quantidade' => 'integer',
+        'status' => 'boolean'
     ];
 
     /**
@@ -43,14 +51,11 @@ class Produtos extends Model
      * @var array
      */
     public static $rules = [
-        
+        'nome' => 'required',
+        'valor' => 'required',
+        'quantidade' => 'required',
+        'status' => 'required'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     **/
-    public function pedidos()
-    {
-        return $this->belongsTo(\App\Models\ Pedidos::class);
-    }
+    
 }

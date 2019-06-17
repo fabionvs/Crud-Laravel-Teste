@@ -2,14 +2,20 @@
     <table class="table" id="produtos-table">
         <thead>
             <tr>
-                <th>Pedidos</th>
+                <th>Nome</th>
+        <th>Valor</th>
+        <th>Quantidade</th>
+        <th>Status</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
         <tbody>
         @foreach($produtos as $produtos)
             <tr>
-                <td>{!! $produtos->pedidos !!}</td>
+                <td>{!! $produtos->nome !!}</td>
+            <td>{!! $produtos->valor !!}</td>
+            <td>{!! $produtos->quantidade !!}</td>
+            <td>{!! $produtos->status !!}</td>
                 <td>
                     {!! Form::open(['route' => ['produtos.destroy', $produtos->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
