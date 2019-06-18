@@ -2,25 +2,22 @@
 
 namespace App\Repositories;
 
-use App\Models\Produtos;
+use App\Models\Pedido;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ProdutosRepository
+ * Class PedidoRepository
  * @package App\Repositories
- * @version June 17, 2019, 6:13 pm UTC
+ * @version June 17, 2019, 6:02 pm UTC
 */
 
-class ProdutosRepository extends BaseRepository
+class PedidoRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'nome',
-        'valor',
-        'quantidade',
-        'status'
+        'produto_id'
     ];
 
     /**
@@ -38,10 +35,6 @@ class ProdutosRepository extends BaseRepository
      **/
     public function model()
     {
-        return Produtos::class;
-    }
-
-    public function getActiveProducts() {
-        return Produtos::select()->where('status', true)->get();
+        return Pedido::class;
     }
 }

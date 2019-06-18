@@ -4,10 +4,32 @@
     <p>{!! $produtos->id !!}</p>
 </div>
 
-<!-- Pedidos Field -->
+<!-- Nome Field -->
 <div class="form-group">
-    {!! Form::label('pedidos', 'Pedidos:') !!}
-    <p>{!! $produtos->pedidos !!}</p>
+    {!! Form::label('nome', 'Nome:') !!}
+    <p>{!! $produtos->nome !!}</p>
+</div>
+
+<!-- Valor Field -->
+<div class="form-group">
+    {!! Form::label('valor', 'Valor:') !!}
+    <p>{!! $produtos->valor !!}</p>
+</div>
+
+<!-- Quantidade Field -->
+<div class="form-group">
+    {!! Form::label('quantidade', 'Quantidade:') !!}
+    <p>{!! $produtos->quantidade !!}</p>
+</div>
+
+<!-- Status Field -->
+<div class="form-group">
+    {!! Form::label('status', 'Status:') !!}<br>
+    @if ($produtos->status == 1)
+        <span class="label label-success">Ativo</span>
+    @elseif ($produtos->status == 1)
+        <span class="label label-danger">Inativo</span>
+    @endif
 </div>
 
 <!-- Created At Field -->

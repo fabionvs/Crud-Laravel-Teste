@@ -11,15 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
 
 Route::resource('produtos', 'ProdutosController');
+Route::get('/', 'HomeController@index')->name('home.index');
+Route::post('/fazer-pedido', 'HomeController@store')->name('home.store');
 
-Route::resource('produtos', 'ProdutosController');
+Route::resource('pedidos', 'PedidosController');

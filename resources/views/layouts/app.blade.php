@@ -125,7 +125,9 @@
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                    <li><a href="{!! url('/home') !!}">Home</a></li>
+                    <li><a href="{!! url('/') !!}">Loja</a></li>
+                    <li><a href="{!! url('/produtos') !!}">Produtos</a></li>
+                    <li><a href="{!! url('/pedidos') !!}">Pedidos</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->

@@ -70,4 +70,15 @@ class ProdutosRepositoryTest extends TestCase
         $this->assertTrue($resp);
         $this->assertNull(Produtos::find($produtos->id), 'Produtos should not exist in DB');
     }
+
+    /**
+     * @test listActiveProducts
+     */
+    public function test_listActiveProducts_produtos()
+    {
+        $produtos = $this->makeProdutos();
+        $dbProdutos = $this->produtosRepo->getActiveProducts();
+        $dbProdutos = $dbProdutos->toArray();
+        $this->assertModelData($produtos->toArray(), $dbProdutos);
+    }
 }
