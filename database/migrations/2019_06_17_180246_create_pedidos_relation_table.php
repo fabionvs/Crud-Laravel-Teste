@@ -7,7 +7,7 @@ class CreatePedidosRelationTable extends Migration
 {
 
     /**
-     * Run the migrations.
+     * Cria a chave estrangeira
      *
      * @return void
      */
