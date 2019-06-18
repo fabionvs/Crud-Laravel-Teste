@@ -22,3 +22,9 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+    <script type="text/javascript" src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script>
+    $('input[name="valor"]').mask('000000.00', {reverse: true});
+</script>
+@endsection
