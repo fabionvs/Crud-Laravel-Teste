@@ -35,32 +35,6 @@ class PedidosController extends AppBaseController
             ->with('pedidos', $pedidos);
     }
 
-    /**
-     * Show the form for creating a new Pedidos.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        return view('pedidos.create');
-    }
-
-    /**
-     * Store a newly created Pedidos in storage.
-     *
-     * @param CreatePedidosRequest $request
-     *
-     * @return Response
-     */
-    public function store(CreatePedidosRequest $request)
-    {
-        $input = $request->all();
-        $pedidos = $this->pedidosRepository->create($input);
-
-        Flash::success('Pedidos saved successfully.');
-
-        return redirect(route('pedidos.index'));
-    }
 
     /**
      * Display the specified Pedidos.
