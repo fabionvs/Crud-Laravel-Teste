@@ -17,7 +17,7 @@ Auth::routes();
 
 
 Route::resource('produtos', 'ProdutosController');
-Route::resource('/', 'HomeController');
-
+Route::get('/', 'HomeController@index')->name('home.index');
+Route::post('/fazer-pedido', 'HomeController@store')->name('home.store');
 
 Route::resource('pedidos', 'PedidosController');

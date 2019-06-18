@@ -608,53 +608,53 @@
         <span>Finalizar Compra</span>
     </div>
     <div class="checkout-form" id="pedido-form">
-        {!! Form::open(['route' => 'pedidos.store']) !!}
+        {!! Form::open(['route' => 'home.store']) !!}
         <div class="card-wrapper">
         </div>
         <div class="s10"></div>
         <div class="form-container active">
-            <h3>Quantidades</h3>
+            <h3>Quantidade</h3>
             <div id="product-list">
             </div>
             <h3>Informações</h3>
             <div class="row">
                 <div class="col-xs-12">
-                    {!! Form::number('solicitante', null, ['class' => 'form-control', 'placeholder' => 'Solicitante']) !!}
+                    {!! Form::text('solicitante', null, ['class' => 'form-control', 'placeholder' => 'Solicitante']) !!}
                 </div>
             </div>
             <div class="s10"></div>
             <div class="row">
                 <div class="col-xs-12">
-                    {!! Form::number('despachante', null, ['class' => 'form-control', 'placeholder' => 'Despachante']) !!}
+                    {!! Form::text('despachante', null, ['class' => 'form-control', 'placeholder' => 'Despachante']) !!}
                 </div>
             </div>
             <div class="s10"></div>
             <h3>Endereço do Solicitante</h3>
             <div class="row">
                 <div class="col-xs-6">
-                    <input placeholder="CEP" type="text" name="cep" class="form-control">
+                    <input placeholder="CEP" type="text" name="endereco[cep]" class="form-control cep">
                 </div>
                 <div class="col-xs-6">
-                    <input placeholder="UF" type="text" name="uf" class="form-control" maxlength="2">
+                    <input placeholder="UF" type="text" name="endereco[uf]" class="form-control" maxlength="2">
                 </div>
                 <div class="col-xs-6">
-                    <input placeholder="Município" type="text" name="uf" class="form-control">
+                    <input placeholder="Município" type="text" name="endereco[municipio]" class="form-control">
                 </div>
                 <div class="col-xs-6">
-                    <input placeholder="Bairro" type="text" name="uf" class="form-control">
+                    <input placeholder="Bairro" type="text" name="endereco[bairro]" class="form-control">
                 </div>
                 <div class="col-xs-8">
-                    <input placeholder="Rua" type="text" name="uf" class="form-control">
+                    <input placeholder="Rua" type="text" name="endereco[rua]" class="form-control">
                 </div>
                 <div class="col-xs-4">
-                    <input placeholder="Número" type="text" name="uf" class="form-control">
+                    <input placeholder="Número" type="text" name="endereco[numero]" class="form-control">
                 </div>
             </div>
             <div class="s10"></div>
             <div class="row">
 
                 <div class="col-xs-12">
-                    <button type="button" class="btn btn-primary btn-block postfix">Finalizar Compra
+                    <button type="submit" class="btn btn-primary btn-block postfix">Finalizar Compra
                     </button>
                 </div>
             </div>
@@ -682,12 +682,18 @@
                                                 class="badge">{!! $produtos->quantidade !!}</span></p>
                                 </div>
                                 <div class="card-block">
-                                    <div class="pull-xs-right flipable" data-id="{!! $produtos->id !!}"
+                                    <div class="pull-xs-right flipable" data-id="{!! $produtos->id !!}" data-max="{!! $produtos->quantidade !!}"
                                          data-nome="{!! $produtos->nome !!}">
                                         <div class="flipable-group">
-                                            <button class="btn btn-primary add-to-cart"><i
-                                                        class="fa fa-cart-plus"></i> Comprar
-                                            </button>
+                                            @if ($produtos->quantidade > 0)
+                                                <button class="btn btn-primary add-to-cart ">
+                                                    <i class="fa fa-cart-plus"></i> Comprar
+                                                </button>
+                                            @else
+                                                <button class="btn disabled ">
+                                                    <i class="fa fa-times"></i> Indisponível
+                                                </button>
+                                            @endif
                                             <button class="btn btn-danger remove-from-cart"><i
                                                         class="fa fa-times"></i></button>
                                         </div>
@@ -705,6 +711,7 @@
 @endsection
 
 @section('scripts')
+    <script type="text/javascript" src="{{ asset('js/jquery.mask.min.js') }}"></script>
     <script>$(document).ready(function () {
             $('.add-to-cart, .remove-from-cart').on('click', function () {
                 $(this).parents('.flipable').toggleClass('flipped product-added');
@@ -756,8 +763,7 @@
         function atualizaCarrinho() {
             $('#product-list').html('');
             $('.product-added').each(function (index) {
-                console.log($(this).attr('data-nome'), $(this).attr('data-id'));
-                var row = '<div class="row"> <div class="col-xs-6 pt-2 text-center"> <label>' + $(this).attr('data-nome') + '</label> </div><div class="col-xs-4"> <div class="input-group"> <span class="input-group-btn"> <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[' + $(this).attr('data-id') + ']"> <span class="glyphicon glyphicon-minus"></span> </button> </span> <input type="hidden" name="product[' + $(this).attr('data-id') + ']" class="form-control input-number text-center" value="1"> <input type="text" name="quant[' + $(this).attr('data-id') + ']" class="form-control input-number text-center" value="1" min="1" max="10"> <span class="input-group-btn"> <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[' + $(this).attr('data-id') + ']"> <span class="glyphicon glyphicon-plus"></span> </button> </span> </div></div> <div class="col-xs-1"></div><button class="btn btn-danger"><i class="fa fa-times"></i></button></div>';
+                var row = '<div class="row"> <div class="col-xs-6 pt-2 text-center"> <label>' + $(this).attr('data-nome') + '</label> </div><div class="col-xs-4"> <div class="input-group"> <span class="input-group-btn"> <button type="button" class="btn btn-default btn-number" disabled="disabled" data-type="minus" data-field="quant[' + $(this).attr('data-id') + ']"> <span class="glyphicon glyphicon-minus"></span> </button> </span> <input type="hidden" name="product[' + $(this).attr('data-id') + ']" class="form-control input-number text-center" value="1"> <input type="text" name="quant[' + $(this).attr('data-id') + ']" class="form-control input-number text-center" value="1" min="1" max="' + $(this).attr('data-max') + '"> <span class="input-group-btn"> <button type="button" class="btn btn-default btn-number" data-type="plus" data-field="quant[' + $(this).attr('data-id') + ']"> <span class="glyphicon glyphicon-plus"></span> </button> </span> </div></div> <div class="col-xs-1"></div><button type="button" class="btn btn-danger remove-from-cart-1" data-id="' + $(this).attr('data-id') + '"><i class="fa fa-times"></i></button></div>';
                 $('#product-list').append(row);
                 configInputs();
             });
@@ -824,13 +830,13 @@
                 if (valueCurrent >= minValue) {
                     $(".btn-number[data-type='minus'][data-field='" + name + "']").removeAttr('disabled')
                 } else {
-                    alert('Sorry, the minimum value was reached');
+                    alert('Você ultrapassou a quantidade disponível!');
                     $(this).val($(this).data('oldValue'));
                 }
                 if (valueCurrent <= maxValue) {
                     $(".btn-number[data-type='plus'][data-field='" + name + "']").removeAttr('disabled')
                 } else {
-                    alert('Sorry, the maximum value was reached');
+                    alert('Você ultrapassou a quantidade disponível!');
                     $(this).val($(this).data('oldValue'));
                 }
 
@@ -851,6 +857,19 @@
                     e.preventDefault();
                 }
             });
+
+            $('.remove-from-cart-1').on('click', function () {
+                var id = $(this).attr('data-id');
+                $('.product-added').each(function (index) {
+                    if($(this).attr('data-id') == id){
+                        $(this).find('.remove-from-cart')[0].click();
+                    }
+                });
+            });
         }
+
+        $(document).ready(function () {
+            $('.cep').mask('00000-000');
+        });
     </script>
 @endsection
