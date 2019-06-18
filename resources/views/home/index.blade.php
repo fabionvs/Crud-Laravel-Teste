@@ -664,7 +664,7 @@
     <div class="demo-container">
         <div class="demo-container-inner">
             <div class="container">
-
+                @include('flash::message')
                 <h1>Minha Loja Teste</h1>
                 <div class="row">
                     @foreach($produtos as $produtos)

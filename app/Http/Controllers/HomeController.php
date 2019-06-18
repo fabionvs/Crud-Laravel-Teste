@@ -62,7 +62,7 @@ class HomeController extends AppBaseController
             $product->save();
         }
 
-        Flash::success('Pedidos saved successfully.');
+        Flash::success('Pedido salvo com sucesso!');
         return redirect(route('home.index'));
     }
 }

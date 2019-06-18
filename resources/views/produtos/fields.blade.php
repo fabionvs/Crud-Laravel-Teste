@@ -18,7 +18,7 @@
 
 <!-- 'bootstrap / Toggle Switch Status Field' -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
+    {!! Form::label('status', 'Status:') !!}<br>
     <label class="checkbox-inline">
         {!! Form::hidden('status', 0) !!}
         {!! Form::checkbox('status', 1, null,  ['data-toggle' => 'toggle']) !!}

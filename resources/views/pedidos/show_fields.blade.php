@@ -1,3 +1,13 @@
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Solicitante') !!}
+    <p>{!! $pedidos->solicitante !!}</p>
+</div>
+<!-- Created At Field -->
+<div class="form-group">
+    {!! Form::label('created_at', 'Despachante:') !!}
+    <p>{!! $pedidos->despachante !!}</p>
+</div>
 <!-- Id Field -->
 <div class="form-group">
     {!! Form::label('id', 'Id:') !!}
@@ -18,13 +28,8 @@
 
 <!-- Created At Field -->
 <div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
+    {!! Form::label('created_at', 'Criado em:') !!}
     <p>{!! $pedidos->created_at !!}</p>
 </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{!! $pedidos->updated_at !!}</p>
-</div>
 

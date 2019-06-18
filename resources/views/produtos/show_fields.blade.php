@@ -24,8 +24,12 @@
 
 <!-- Status Field -->
 <div class="form-group">
-    {!! Form::label('status', 'Status:') !!}
-    <p>{!! $produtos->status !!}</p>
+    {!! Form::label('status', 'Status:') !!}<br>
+    @if ($produtos->status == 1)
+        <span class="label label-success">Ativo</span>
+    @elseif ($produtos->status == 1)
+        <span class="label label-danger">Inativo</span>
+    @endif
 </div>
 
 <!-- Created At Field -->

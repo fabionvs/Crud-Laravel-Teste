@@ -57,5 +57,5 @@ class Produtos extends Model
         'status' => 'required'
     ];
 
-    
+
 }
