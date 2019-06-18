@@ -619,35 +619,35 @@
             <h3>Informações</h3>
             <div class="row">
                 <div class="col-xs-12">
-                    {!! Form::text('solicitante', null, ['class' => 'form-control', 'placeholder' => 'Solicitante']) !!}
+                    {!! Form::text('solicitante', null, ['class' => 'form-control', 'placeholder' => 'Solicitante', 'required' => 'required']) !!}
                 </div>
             </div>
             <div class="s10"></div>
             <div class="row">
                 <div class="col-xs-12">
-                    {!! Form::text('despachante', null, ['class' => 'form-control', 'placeholder' => 'Despachante']) !!}
+                    {!! Form::text('despachante', null, ['class' => 'form-control', 'placeholder' => 'Despachante', 'required' => 'required']) !!}
                 </div>
             </div>
             <div class="s10"></div>
             <h3>Endereço do Solicitante</h3>
             <div class="row">
                 <div class="col-xs-6">
-                    <input placeholder="CEP" type="text" name="endereco[cep]" class="form-control cep">
+                    <input placeholder="CEP" type="text" name="endereco[cep]" class="form-control cep" required>
                 </div>
                 <div class="col-xs-6">
-                    <input placeholder="UF" type="text" name="endereco[uf]" class="form-control" maxlength="2">
+                    <input placeholder="UF" type="text" name="endereco[uf]" class="form-control" maxlength="2" required>
                 </div>
                 <div class="col-xs-6">
-                    <input placeholder="Município" type="text" name="endereco[municipio]" class="form-control">
+                    <input placeholder="Município" type="text" name="endereco[municipio]" class="form-control" required>
                 </div>
                 <div class="col-xs-6">
-                    <input placeholder="Bairro" type="text" name="endereco[bairro]" class="form-control">
+                    <input placeholder="Bairro" type="text" name="endereco[bairro]" class="form-control" required>
                 </div>
                 <div class="col-xs-8">
-                    <input placeholder="Rua" type="text" name="endereco[rua]" class="form-control">
+                    <input placeholder="Rua" type="text" name="endereco[rua]" class="form-control" required>
                 </div>
                 <div class="col-xs-4">
-                    <input placeholder="Número" type="text" name="endereco[numero]" class="form-control">
+                    <input placeholder="Número" type="text" name="endereco[numero]" class="form-control" required>
                 </div>
             </div>
             <div class="s10"></div>
