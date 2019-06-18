@@ -29,18 +29,6 @@ class PedidosTest extends TestCase
      *
      * @return void
      */
-    public function testListaProdutosTest()
-    {
-        $response = $this->get('/produtos');
-        $response->assertStatus(200);
-
-    }
-
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
     public function testListaPedidosTest()
     {
         $response = $this->get('/pedidos');
